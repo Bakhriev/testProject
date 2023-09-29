@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const subMenu = this.querySelector('[data-dropdown-menu]')
 		subMenu.style.maxHeight = subMenu.style.maxHeight
 			? ''
-			: subMenu.scrollHeight + 'px'
+			: `${subMenu.scrollHeight}px`
 	}
 
 	const swiper = new Swiper('.swiper-1', {
@@ -27,9 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		breakpoints: {
 			320: {
-				slidesPerView: 2,
-			},
-			530: {
 				slidesPerView: 2,
 			},
 			768: {
