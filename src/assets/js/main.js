@@ -1,6 +1,3 @@
-import {burgerMenu} from './functions/burger'
-burgerMenu()
-
 const dropdowns = document.querySelectorAll('[data-dropdown]')
 
 dropdowns.forEach(dropdown => {
@@ -67,6 +64,10 @@ const closeBtn = document.querySelector('.modal__close')
 const overlay = document.querySelector('.overlay')
 const body = document.querySelector('body')
 
+const burger = document.querySelector('.burger')
+const mobileMenu = document.querySelector('.header-mobile')
+const elements = [burger, mobileMenu, overlay]
+
 closeBtn.addEventListener('click', () => {
 	modal.classList.remove('opened')
 	overlay.classList.remove('active')
@@ -76,6 +77,8 @@ overlay.addEventListener('click', () => {
 	modal.classList.remove('opened')
 	overlay.classList.remove('active')
 	body.classList.remove('disable-scroll')
+	mobileMenu.classList.remove('active')
+	burger.classList.remove('active')
 })
 btns.forEach(btn => {
 	btn.addEventListener('click', () => {
@@ -84,3 +87,20 @@ btns.forEach(btn => {
 		body.classList.add('disable-scroll')
 	})
 })
+
+const burgerMenu = () => {
+	burger.addEventListener('click', () => {
+		toggleActiveClass(elements)
+	})
+
+	window.addEventListener('resize', () => {
+		const {innerWidth} = window
+		if (innerWidth > 991.98) {
+			body.classList.remove('disable-scroll')
+		}
+	})
+}
+burgerMenu()
+const toggleActiveClass = elements => {
+	elements.forEach(elem => elem.classList.toggle('active'))
+}
