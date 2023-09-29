@@ -35,7 +35,7 @@
 	transition: 0.3s ease all;
 	visibility: hidden;
 	opacity: 0;
-	&.opened {
+	&.active {
 		opacity: 1;
 		visibility: visible;
 		translate: -50% -50%;

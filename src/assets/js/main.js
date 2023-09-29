@@ -59,48 +59,56 @@ const initSlide = () => {
 initSlide()
 
 const modal = document.querySelector('.modal-1')
-const btns = document.querySelectorAll('.hero__modal-btns button')
+const modalBtns = document.querySelectorAll('.hero__modal-btns button')
 const closeBtn = document.querySelector('.modal__close')
-const overlay = document.querySelector('.overlay')
 const body = document.querySelector('body')
 
 const burger = document.querySelector('.burger')
 const mobileMenu = document.querySelector('.header-mobile')
-const elements = [burger, mobileMenu, overlay]
+const overlay = document.querySelector('.overlay')
 
 closeBtn.addEventListener('click', () => {
-	modal.classList.remove('opened')
-	overlay.classList.remove('active')
+	removeActiveClass([modal, overlay])
 	body.classList.remove('disable-scroll')
 })
+
 overlay.addEventListener('click', () => {
-	modal.classList.remove('opened')
-	overlay.classList.remove('active')
+	removeActiveClass([overlay, modal, burger, mobileMenu])
 	body.classList.remove('disable-scroll')
-	mobileMenu.classList.remove('active')
-	burger.classList.remove('active')
 })
-btns.forEach(btn => {
-	btn.addEventListener('click', () => {
-		modal.classList.add('opened')
-		overlay.classList.add('active')
+
+modalBtns.forEach(modalBtn => {
+	modalBtn.addEventListener('click', () => {
+		addActiveClass([modal, overlay])
 		body.classList.add('disable-scroll')
 	})
 })
 
 const burgerMenu = () => {
 	burger.addEventListener('click', () => {
-		toggleActiveClass(elements)
+		toggleActiveClass([burger, overlay, mobileMenu])
+		body.classList.toggle('disable-scroll')
 	})
 
 	window.addEventListener('resize', () => {
 		const {innerWidth} = window
 		if (innerWidth > 991.98) {
 			body.classList.remove('disable-scroll')
+			removeActiveClass([mobileMenu, modal, overlay, burger])
 		}
 	})
 }
+
 burgerMenu()
+
 const toggleActiveClass = elements => {
 	elements.forEach(elem => elem.classList.toggle('active'))
+}
+
+const addActiveClass = elements => {
+	elements.forEach(elem => elem.classList.add('active'))
+}
+
+const removeActiveClass = elements => {
+	elements.forEach(elem => elem.classList.remove('active'))
 }
