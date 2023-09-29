@@ -107,9 +107,14 @@
 		}
 	}
 }
-
+.swiper-2 {
+	.swiper-slide {
+		cursor: pointer;
+	}
+}
 .swiper-2 {
 	height: 180px;
+
 	@media screen and (max-width: 768px) {
 		height: 150px;
 	}
