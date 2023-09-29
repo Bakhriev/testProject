@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+	<!-- Head -->
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<title>Your Title</title>
+	</head>
+
+	<!-- Head -->
+
+	<body>
+		<div class="wrapper">
+			<div class="modal modal-1">
+				<div class="modal__close">X</div>
+				<div class="modal__title">Личный кабинет</div>
+				<input type="number" class="modal__input" placeholder="Номер" />
+				<input
+					type="text"
+					class="modal__input"
+					placeholder="Сообщение о том, что все сделано"
+				/>
+				<button type="submit">Отправить</button>
+			</div>
+			<div class="overlay"></div>
+
+			@include('assets/layout/header.html')
+
+			<main class="main">@include('assets/layout/hero.html')</main>
+
+			<!-- Footer -->
+			@include('assets/layout/footer.html')
+		</div>
+		<script type="module" src="assets/js/main.js"></script>
+	</body>
+</html>
